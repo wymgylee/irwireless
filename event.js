@@ -8,12 +8,16 @@ window.IRWIRELESS = {
     } else if(nConnFlag == -4) {// 중복 로그인
     } else if(nConnFlag == 0) {// 연결 끊김
     }
+
+    alert("DevConnect, nConnFlag=" + nConnFlag);
   },
 
   DevHook : function(nHookFlag){
     if(nHookFlag == "1"){
   	}else if(nHookFlag == "3"){
   	}
+
+    alert("DevHook, nHookFlag=" + nHookFlag);
   },
 
   // 수신 Ringing 상태에서 호출 됨.
@@ -24,6 +28,7 @@ window.IRWIRELESS = {
   },
 
   DevCidData : function(szPhoneNum){
+    alert("DevCidData, szPhoneNum=" + szPhoneNum);
   },
 
   DevVolume : function(volume){
@@ -33,6 +38,7 @@ window.IRWIRELESS = {
   },
 
   DevOutGoing : function(szPhoneNum){
+    alert("DevOutGoing, szPhoneNum=" + szPhoneNum);
   },
 
   DevRecStartEnd : function(nFlag, szFileName){
@@ -41,6 +47,7 @@ window.IRWIRELESS = {
       }else if(nFlag == "0"){
         // 녹취 종료
     	}
+      alert("DevRecStartEnd, nFlag=" + nFlag + ", szFileName=" + szFileName);
   },
 
   DevRecordFolder : function(path){
@@ -53,6 +60,7 @@ window.IRWIRELESS = {
   	if(nCallFlag == "0"){//대기중상태
   	}else if(nCallFlag == "1"){//통화중상태
   	}
+    alert("DevCallState:" + nCallFlag);
   },
 
   DevCutRecord : function(filename) {
@@ -71,9 +79,11 @@ window.IRWIRELESS = {
   },
 
   DevCallStart : function(szCallInfo){
+    alert("DevCallStart, szCallInfo=" + szCallInfo);
   },
 
   DevCallEnd : function(szCallInfo){
+    alert("DevCallEnd, szCallInfo=" + szCallInfo);
   },
 
   DevSmsCount : function(szDate){
