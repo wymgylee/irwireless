@@ -25,6 +25,7 @@ window.IRWIRELESS = {
     if(nBell == "0"){
   	}else if(nBell == "1"){
   	}
+    alert("DevBell, nBell=" + nBell);
   },
 
   DevCidData : function(szPhoneNum){
