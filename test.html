@@ -43,6 +43,18 @@
       function fn_GetCallState() {
         IRWIRELESS.GetCallState();
       }
+
+      /* 5. 통화 녹음 파일명 변경 → DevRecordFileName 이벤트 핸들러 확인 */
+      function fn_SetRecordFileName(szFileName) {
+        IRWIRELESS.SetRecordFileName(szFileName);
+      }
+
+      function fn_CallStart() {
+        var fileName = document.getElementById('txtRecordFileName').value;
+        if(fileName != "")
+          IRWIRELESS.SetRecordFileName(fileName);
+      }
+
     </script>
   </head>
   <body>
@@ -50,7 +62,7 @@
 
     <p>
       1. 핸드폰 연결 / 연결 종료<br/>
-      <input type="button" value="핸드폰 연결" onclick="fn_CreateDevice()"/>      
+      <input type="button" value="핸드폰 연결" onclick="fn_CreateDevice()"/>
       <input type="button" value="핸드폰 연결 종료" onclick="fn_CloseDevice()"/>
     </p>
 
@@ -70,6 +82,29 @@
     <p>
       4. 통화 상태 확인<br/>
       <input type="button" value="통화 상태 확인" onclick="fn_GetCallState()"/>
+    </p>
+
+    <p>
+      5. 통화 녹음<br/>
+      <input type="button" value="녹음 파일 저장 위치 확인(핸드폰)" onclick="IRWIRELESS.GetRecordFolder()"/>
+      <input type="button" value="녹음 파일명 확인" onclick="IRWIRELESS.GetRecordFileName()"/>
+      녹음 파일명 변경(확장자는 주지 않는다.) : <input type="text" id="txtRecordFileName"/><br/><br/>
+      <input type="button" value="녹음 파일명 변경" onclick="fn_SetRecordFileName(document.getElementById('txtRecordFileName').value)"/>
+      <input type="button" value="녹음 전송 서버 정보 확인" onclick="IRWIRELESS.GetSavePath()"/>
+      <input type="button" value="핸드폰 내 파일 확인" onclick="IRWIRELESS.GetFileList()"/>
+      <input type="button" value="청취" onclick="IRWIRELESS.ListenFile('http://ftp1.contactlink.co.kr:8080/PHONE/MOBILE/ENC/20180703143849_01032370942_0269052831_3_7_20180703143856_20180703143858_2_15242_1_.amr')"/>
+    </p>
+
+    <p>
+      6. 기타<br/>
+      <input type="button" value="암호화설정" onclick="IRWIRELESS.SetEnc(1)"/>
+      <input type="button" value="암호화해제" onclick="IRWIRELESS.SetEnc(0)"/>
+      <input type="button" value="배터리정보" onclick="IRWIRELESS.GetBatteryInfo()"/>
+
+      <input type="button" value="스크립트오111류" onclick="abddjkdjdjdc()"/>
+      <input type="button" value="modal" onclick="window.showModalDialog('http://www.naver.com', window, 'status:no')"/>
+      <input type="button" value="alert" onclick="alert()"/>
+
     </p>
   </body>
 </html>

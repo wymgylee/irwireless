@@ -10,6 +10,10 @@ window.IRWIRELESS = {
     }
 
     alert("DevConnect, nConnFlag=" + nConnFlag);
+    IRWIRELESS.SetSavePath(2, "http://ftp1.contactlink.co.kr:8080/httpUpload/RefHome.jsp", "PHONE%2FMOBILE%2Firlink", 1); // 성공
+    //IRWIRELESS.SetSavePath(2, "http://ftp1.contactlink.co.kr:8080/httpUpload/RefHome.jsp", "PHONE%2FMOBILE%2Firlink", 0); // 성공
+    //IRWIRELESS.SetSavePath(2, "http://ftp1.contactlink.co.kr:8080/httpUpload/RefHome.jsp", "PHONE%2FMOBILE%2F", 0); // 실패
+    //IRWIRELESS.SetSavePath(2, "http://ftp1.contactlink.co.kr:8080/httpUpload/RefHome.jsp", "PHONE%2FMOBILE", 0); // 성공
   },
 
   DevHook : function(nHookFlag){
@@ -47,14 +51,17 @@ window.IRWIRELESS = {
         // 녹취 시작
       }else if(nFlag == "0"){
         // 녹취 종료
+        IRWIRELESS.SetUploadFile(szFileName, szFileName, "http://ftp1.contactlink.co.kr:8080/httpUpload/RefHome.jsp", "PHONE%2FMOBILE%2Firlink");
     	}
       alert("DevRecStartEnd, nFlag=" + nFlag + ", szFileName=" + szFileName);
   },
 
   DevRecordFolder : function(path){
+    alert("DevRecordFolder, path=" + path);
   },
 
   DevUploaded : function(nResult, localFileName, serverFileName){
+    alert("DevUploaded, nResult=" + nResult + ", localFileName=" + localFileName + ", serverFileName=" + serverFileName);
   },
 
   DevCallState : function(nCallFlag){
@@ -68,6 +75,7 @@ window.IRWIRELESS = {
   },
 
   DevFileList : function(szFileList) {
+    alert("DevFileList:" + szFileList);
   },
 
   DevCertState : function(state){
@@ -80,6 +88,7 @@ window.IRWIRELESS = {
   },
 
   DevCallStart : function(szCallInfo){
+    fn_CallStart();
     alert("DevCallStart, szCallInfo=" + szCallInfo);
   },
 
@@ -91,15 +100,33 @@ window.IRWIRELESS = {
   },
 
   DevSavePath : function(nMode, szUrl, szPath, nSort){
+      alert("DevSavePath, nMode=" + nMode + ", szUrl=" + szUrl + ", szPath=" + szPath + ", nSort=" + nSort);
   },
 
   DevRecordFileName : function(nResult, szFileName){
+    if(nResult == 1)
+      alert("DevRecordFileName, nResult=" + nResult + ", szFileName=" + szFileName + ", 파일명 변경 성공");
+    else
+      alert("DevRecordFileName, nResult=" + nResult + ", szFileName=" + szFileName + ", 파일명 변경 실패");
   },
 
   DevRecPartial : function(nStartEnd, szFileName, nResult){
   },
 
   DevBatteryInfo : function(level){
+    alert("DevBatteryInfo, level=" + level);
+  },
+
+  DevMissCall : function(){
+    alert("DevMissCall");
+  },
+
+  DevPauseRecording : function(nFlag){
+    alert("DevPauseRecording, nFlag=" + nFlag);
+  },
+
+  DevResumeRecording : function(nFlag){
+    alert("DevResumeRecording, nFlag=" + nFlag);
   }
 
 }
