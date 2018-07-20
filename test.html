@@ -7,11 +7,11 @@
     <script src="irwireless.js"></script>
     <script>
       /* 0. 릴레이서버 접속 */
-      IRWIRELESS.Init("http://122.199.236.196:3001/");
+      //IRWIRELESS.Init("http://122.199.236.196:3001/");
 
       /* 1.1 핸드폰 연결 시도 → DevConnect 이벤트 핸들러 확인 */
       function fn_CreateDevice() {
-        IRWIRELESS.CreateDevice("gylee");
+        IRWIRELESS.CreateDevice("http://122.199.236.196:3001/", "01032370942");
       }
 
       /* 1.2 핸드폰 연결 종료 → DevConnect 이벤트 핸들러 확인 */
